@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title">
+                    <h5 class="m-b-10">FireBase Users</h5>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="col-xl-12">
+    <div class="card">
+        <div class="card-header">
+            <h5>User List</h5>
+        
+        </div>
+        <div class="card-body table-border-style">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>User ID</th>
+                            <th>User Email</th>
+                            <th>User Phone</th>
+                            <th>Action</th>
+                        
+                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users %}
+                        <tr>
+                            <td>{{user.uid}}</td>
+                            <td>{{user.email}}</td>
+                            <td>{{user.phone_number}}</td>
+                            <td>
+                                <a href="">
+                                    <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
+                                </a>
+                                
+                                <a href="{% url 'userdelete' user.uid %}">
+                                    <button class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></button>
+                                </a>
+                                <a href="{% url 'filrebaseusersposts' user.uid %}">
+                                    <button class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></button>
+                                </a>
+                                
+                            </td>
+            
+                        </tr>
+                        {% endfor %}
+                        
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+    
